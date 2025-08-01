@@ -8,7 +8,7 @@ info:
   license:
     name: MIT License
     url: 'https://opensource.org/licenses/MIT'
-  version: 1.0.0
+  version: 1.0.1
 
 x-json-schema-faker:
   locale: es_MX
