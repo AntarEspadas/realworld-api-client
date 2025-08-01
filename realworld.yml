@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RealWorld Conduit API
-  description: Conduit API documentation
+  description: Documentación del API de Conduit
   contact:
     name: RealWorld
     url: 'https://realworld-docs.netlify.app/'
