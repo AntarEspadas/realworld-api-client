@@ -15,10 +15,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          registry-url: https://registry.npmjs.org
       - name: Instalar openapi-generator
         run: npm install @openapitools/openapi-generator-cli -g
+      - name: Obtener versión de documento de OpenAPI
+        id: get-version
+        uses: ./.github/actions/openapi-get-version
+        with:
+          file-path: realworld.yml
       - name: Generar código
-        run: openapi-generator-cli generate -g typescript-fetch -i realworld.yml -p npmName=@antarespadas/realworld-api-client,npmVersion=1.0.0
+        run: openapi-generator-cli generate -g typescript-fetch -i realworld.yml -p npmName=@antarespadas/realworld-api-client,npmVersion=${{ steps.get-version.outputs.version }}
       - name: Configurar git
         run: |
           git config user.name "github-actions"
@@ -28,3 +34,22 @@ jobs:
           git add .
           git commit -m "Actualizar código auto-generado"
           git push
+      - name: Verificar si la etiqueta existe
+        id: tag-exists
+        run: |
+          git fetch --tags
+          if [ $(git tag -l "${{ steps.get-version.outputs.version }}") ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Crear etiqutea
+        if: steps.tag-exists.outputs.exists == 'false'
+        run: |
+          git tag ${{ steps.get-version.outputs.version }}
+          git push origin ${{ steps.get-version.outputs.version }}
+      - name: Publicar a NPM
+        if: steps.tag-exists.outputs.exists == 'false'
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

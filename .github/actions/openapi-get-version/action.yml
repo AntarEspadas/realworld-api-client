@@ -1,0 +1,22 @@
+name: Get OpenAPI version
+description: Get the version specified inside an OpenAPI specification file
+
+inputs:
+  file-path:
+    description: Path to the OpenAPI specification file
+    required: true
+
+outputs:
+  version:
+    description: Version specified inside the OpenAPI specification file
+    value: ${{ steps.get-version.outputs.result }}
+    
+
+runs:
+  using: composite
+  steps:
+    - name: Obtener version
+      id: get-version
+      uses: mikefarah/yq@master
+      with:
+        cmd: yq .info.version ${{ inputs.file-path }}
