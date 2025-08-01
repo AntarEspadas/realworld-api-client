@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * RealWorld Conduit API
- * Conduit API documentation
+ * Documentación del API de Conduit
  *
  * The version of the OpenAPI document: 1.0.0
  * 
