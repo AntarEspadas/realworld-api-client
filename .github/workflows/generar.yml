@@ -1,0 +1,30 @@
+on:
+  push:
+    paths:
+      - realworld.yml
+
+jobs:
+  generar-codigo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+      - name: Instalar Node y NPM
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar openapi-generator
+        run: npm install @openapitools/openapi-generator-cli -g
+      - name: Generar código
+        run: openapi-generator-cli generate -g typescript-fetch -i realworld.yml -p npmName=@antarespadas/realworld-api-client,npmVersion=1.0.0
+      - name: Configurar git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+      - name: Commit y push
+        run: |
+          git add .
+          git commit -m "Actualizar código auto-generado"
+          git push
