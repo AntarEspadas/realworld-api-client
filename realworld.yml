@@ -1,20 +1,19 @@
 openapi: 3.0.1
 info:
   title: RealWorld Conduit API
-  description: Documentación del API de Conduit
+  description: Conduit API documentation
   contact:
     name: RealWorld
     url: 'https://realworld-docs.netlify.app/'
   license:
     name: MIT License
     url: 'https://opensource.org/licenses/MIT'
-  version: 1.0.1
-
+  version: 1.1.0
 x-json-schema-faker:
   locale: es_MX
 tags:
   - name: Articles
-    description: Operaciones relacionadas con la consulta, publicación y modificación de artículos
+    description: 'Operaciones relacionadas con la consulta, publicación y modificación de artículos'
   - name: Comments
     description: Operaciones relacionadas con comentarios
   - name: Favorites
@@ -50,7 +49,7 @@ paths:
       tags:
         - User and Authentication
       description: Register a new user
-      operationId: CreateUser
+      operationId: CrearUsuario
       requestBody:
         $ref: '#/components/requestBodies/NewUserRequest'
       responses:
@@ -464,14 +463,23 @@ components:
       properties:
         email:
           type: string
+          x-faker: internet.email
         token:
           type: string
+          x-faker:
+            random.alphaNumeric:
+              - 20
         username:
           type: string
+          x-faker: name.firstName
         bio:
           type: string
+          x-faker: lorem.paragraph
         image:
           type: string
+          x-faker:
+            fake:
+              - 'https://i.pravatar.cc/150?img={{datatype.number(70)}}'
     UpdateUser:
       type: object
       properties:
@@ -502,7 +510,7 @@ components:
           type: string
           x-faker:
             fake:
-              - https://i.pravatar.cc/150?img={{datatype.number(70)}}
+              - 'https://i.pravatar.cc/150?img={{datatype.number(70)}}'
         following:
           type: boolean
     Article:
@@ -898,4 +906,3 @@ components:
             
       name: Authorization
       in: header
-
