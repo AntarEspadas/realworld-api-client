@@ -10,13 +10,15 @@ src/apis/TagsApi.ts
 src/apis/UserAndAuthenticationApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/ActualizarUsuarioActualRequest.ts
 src/models/Article.ts
 src/models/Comment.ts
+src/models/CrearArticuloRequest.ts
 src/models/CrearUsuarioRequest.ts
 src/models/CreateArticleCommentRequest.ts
-src/models/CreateArticleRequest.ts
 src/models/GenericErrorModel.ts
 src/models/GenericErrorModelErrors.ts
+src/models/IniciarSesionRequest.ts
 src/models/InlineObject.ts
 src/models/InlineObject1.ts
 src/models/InlineObject2.ts
@@ -25,7 +27,6 @@ src/models/InlineObject4.ts
 src/models/InlineObject4ArticlesInner.ts
 src/models/InlineObject5.ts
 src/models/InlineObject6.ts
-src/models/LoginRequest.ts
 src/models/LoginUser.ts
 src/models/NewArticle.ts
 src/models/NewComment.ts
@@ -33,7 +34,6 @@ src/models/NewUser.ts
 src/models/Profile.ts
 src/models/UpdateArticle.ts
 src/models/UpdateArticleRequest.ts
-src/models/UpdateCurrentUserRequest.ts
 src/models/UpdateUser.ts
 src/models/User.ts
 src/models/index.ts
