@@ -8,7 +8,7 @@ info:
   license:
     name: MIT License
     url: 'https://opensource.org/licenses/MIT'
-  version: 1.1.1
+  version: 1.2.0
 x-json-schema-faker:
   locale: es_MX
 tags:
@@ -33,7 +33,7 @@ paths:
         - User and Authentication
       summary: Existing user login
       description: Login for existing user
-      operationId: Login
+      operationId: IniciarSesion
       requestBody:
         $ref: '#/components/requestBodies/LoginUserRequest'
       responses:
@@ -64,7 +64,7 @@ paths:
         - User and Authentication
       summary: Get current user
       description: Gets the currently logged-in user
-      operationId: GetCurrentUser
+      operationId: ObtenerUsuarioActual
       responses:
         '200':
           $ref: '#/components/responses/UserResponse'
@@ -79,7 +79,7 @@ paths:
         - User and Authentication
       summary: Update current user
       description: Updated user information for current user
-      operationId: UpdateCurrentUser
+      operationId: ActualizarUsuarioActual
       requestBody:
         $ref: '#/components/requestBodies/UpdateUserRequest'
       responses:
@@ -183,7 +183,7 @@ paths:
         - Articles
       summary: Get recent articles globally
       description: Get most recent articles globally. Use query parameters to filter results. Auth is optional
-      operationId: GetArticles
+      operationId: ObtenerArticulos
       parameters:
         - name: tag
           in: query
@@ -214,7 +214,7 @@ paths:
         - Articles
       summary: Create an article
       description: Create an article. Auth is required
-      operationId: CreateArticle
+      operationId: CrearArticulo
       requestBody:
         $ref: '#/components/requestBodies/NewArticleRequest'
       responses:
