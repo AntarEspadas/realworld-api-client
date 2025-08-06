@@ -2,9 +2,9 @@
 /* eslint-disable */
 export * from './Article';
 export * from './Comment';
+export * from './CrearUsuarioRequest';
 export * from './CreateArticleCommentRequest';
 export * from './CreateArticleRequest';
-export * from './CreateUserRequest';
 export * from './GenericErrorModel';
 export * from './GenericErrorModelErrors';
 export * from './InlineObject';

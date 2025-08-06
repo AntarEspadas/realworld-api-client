@@ -12,9 +12,9 @@ src/apis/index.ts
 src/index.ts
 src/models/Article.ts
 src/models/Comment.ts
+src/models/CrearUsuarioRequest.ts
 src/models/CreateArticleCommentRequest.ts
 src/models/CreateArticleRequest.ts
-src/models/CreateUserRequest.ts
 src/models/GenericErrorModel.ts
 src/models/GenericErrorModelErrors.ts
 src/models/InlineObject.ts
